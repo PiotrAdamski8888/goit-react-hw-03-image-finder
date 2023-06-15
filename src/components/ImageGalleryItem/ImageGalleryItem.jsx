@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './ImageGalleryItem.modules.css';
+import css from './ImageGalleryItem.module.css';
 
 export const ImageGalleryItem = ({ image, onClick }) => {
   const handleImageClick = () => {

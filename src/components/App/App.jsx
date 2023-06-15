@@ -7,7 +7,7 @@ import { Modal } from 'components/Modal/Modal';
 
 import { fetchPictures, normalizedImages, perPage } from 'components/API/API';
 
-import css from './App.modules.css'
+import css from './App.module.css'
 
 export class App extends Component {
   state = {

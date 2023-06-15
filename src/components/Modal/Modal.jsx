@@ -1,5 +1,7 @@
 import React from 'react';
-import css from './Modal.modules.css';
+import PropTypes from 'prop-types';
+
+import css from './Modal.module.css';
 export const Modal = ({ image, onClose }) => {
   return (
     <div className={css.Overlay} onClick={onClose}>
@@ -8,4 +10,12 @@ export const Modal = ({ image, onClose }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  image: PropTypes.shape({
+    largeImageURL: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
 };
