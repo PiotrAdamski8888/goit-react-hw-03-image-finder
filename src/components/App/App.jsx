@@ -7,7 +7,7 @@ import { Modal } from 'components/Modal/Modal';
 
 import { fetchPictures, normalizedImages, perPage } from 'components/API/API';
 
-import css from './App.module.css'
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -20,10 +20,17 @@ export class App extends Component {
     selectedImage: '',
   };
 
-  handleSearch = query => {
-    this.setState({ query, page: 1, images: [], error: null }, () => {
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.query !== this.state.query ||
+      prevState.page !== this.state.page
+    ) {
       this.fetchImages();
-    });
+    }
+  }
+
+  handleSearch = query => {
+    this.setState({ query, page: 1, images: [], error: null });
   };
 
   fetchImages = () => {
@@ -46,12 +53,7 @@ export class App extends Component {
   };
 
   loadMoreImages = () => {
-    this.setState(
-      prevState => ({ page: prevState.page + 1 }),
-      () => {
-        this.fetchImages();
-      }
-    );
+    this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
   openModal = image => {
